@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://do51cl5x0c8r8"
+path="res://.godot/imported/sample_pelvis.aseprite-7e1ed67c58303fad5db718fdb02a36a4.res"
+
+[deps]
+
+source_file="res://player/sample_body/sample_pelvis.aseprite"
+dest_files=["res://.godot/imported/sample_pelvis.aseprite-7e1ed67c58303fad5db718fdb02a36a4.res"]
+
+[params]
+

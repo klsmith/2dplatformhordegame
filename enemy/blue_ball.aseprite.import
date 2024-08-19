@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://5himqjyg4bqu"
+path="res://.godot/imported/blue_ball.aseprite-81095adc2de43803c55919ce88305dfe.res"
+
+[deps]
+
+source_file="res://enemy/blue_ball.aseprite"
+dest_files=["res://.godot/imported/blue_ball.aseprite-81095adc2de43803c55919ce88305dfe.res"]
+
+[params]
+

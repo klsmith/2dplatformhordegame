@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://btwet0r10slhd"
+path="res://.godot/imported/big_wasp_body.aseprite-03a87ab10c3e7d76a67fc57d0e4f26bf.res"
+
+[deps]
+
+source_file="res://enemy/big_wasp_body.aseprite"
+dest_files=["res://.godot/imported/big_wasp_body.aseprite-03a87ab10c3e7d76a67fc57d0e4f26bf.res"]
+
+[params]
+

@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bc0alssp0cptl"]
+
+[ext_resource type="Shader" uid="uid://i8pse0etxbkv" path="res://enemy/hit_flash.tres" id="1_eyntu"]
+
+[resource]
+resource_local_to_scene = true
+shader = ExtResource("1_eyntu")
+shader_parameter/Enabled = false
+shader_parameter/Flash_Color = Color(1, 1, 1, 1)

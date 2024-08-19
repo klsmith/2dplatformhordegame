@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://xt3vm7ytcl8n"
+path="res://.godot/imported/sample_tube.aseprite-006c025ad517e2b9474da7efe6068aad.res"
+
+[deps]
+
+source_file="res://player/sample_body/sample_tube.aseprite"
+dest_files=["res://.godot/imported/sample_tube.aseprite-006c025ad517e2b9474da7efe6068aad.res"]
+
+[params]
+

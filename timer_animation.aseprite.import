@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://d4lconkypd7cd"
+path="res://.godot/imported/timer_animation.aseprite-678c13b1ffe42d695b170f9d2eb9c6b4.res"
+
+[deps]
+
+source_file="res://timer_animation.aseprite"
+dest_files=["res://.godot/imported/timer_animation.aseprite-678c13b1ffe42d695b170f9d2eb9c6b4.res"]
+
+[params]
+

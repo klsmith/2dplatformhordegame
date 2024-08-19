@@ -1,0 +1,31 @@
+[gd_scene load_steps=7 format=3 uid="uid://cevoj6wrxy1qo"]
+
+[ext_resource type="Texture2D" uid="uid://d0op0wc30nuq6" path="res://boulder/boulder.png" id="1_b8opo"]
+[ext_resource type="Script" path="res://boulder/boulder.gd" id="1_i6kl2"]
+[ext_resource type="Texture2D" uid="uid://ckbdgqwpujvsp" path="res://boulder/boulder_n.png" id="3_eln1y"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_yldcp"]
+cull_mode = 2
+polygon = PackedVector2Array(0, -31, 8, -30, 16, -26, 22, -21, 27, -15, 30, -8, 31, 0, 30, 8, 26, 16, 21, 22, 16, 26, 8, 30, 0, 31, -8, 30, -14, 27, -21, 22, -27, 15, -30, 8, -31, 0, -30, -8, -27, -14, -22, -21, -15, -27, -8, -30)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_ihr7a"]
+diffuse_texture = ExtResource("1_b8opo")
+normal_texture = ExtResource("3_eln1y")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jgw5k"]
+radius = 32.0
+
+[node name="Boulder" type="RigidBody2D"]
+physics_interpolation_mode = 1
+collision_mask = 31
+mass = 5.0
+script = ExtResource("1_i6kl2")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_yldcp")
+
+[node name="BoulderSprite" type="Sprite2D" parent="."]
+texture = SubResource("CanvasTexture_ihr7a")
+
+[node name="BoulderCollision" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_jgw5k")

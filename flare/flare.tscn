@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://chqwp60kkbss0"]
+
+[ext_resource type="Texture2D" uid="uid://cklfnhar27whn" path="res://player/bullet.png" id="1_7vrqv"]
+[ext_resource type="Script" path="res://flare/flare.gd" id="1_dw2bx"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dysl4"]
+
+[sub_resource type="Gradient" id="Gradient_wvwe3"]
+interpolation_color_space = 2
+offsets = PackedFloat32Array(0, 0.249004, 0.35259, 0.904382, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.129282, 0.129282, 0.129282, 1, 0.0373395, 0.0373395, 0.0373395, 1, 0.00285861, 0.00285862, 0.00285861, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_h5in0"]
+gradient = SubResource("Gradient_wvwe3")
+width = 1024
+height = 1024
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[node name="Flare" type="RigidBody2D"]
+collision_layer = 16
+collision_mask = 17
+script = ExtResource("1_dw2bx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_dysl4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(4.76837e-07, 4.76837e-07)
+scale = Vector2(7.5, 5)
+texture = ExtResource("1_7vrqv")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(1, 0.12, 0.12, 1)
+energy = 4.0
+range_layer_min = -100
+shadow_item_cull_mask = 3
+texture = SubResource("GradientTexture2D_h5in0")

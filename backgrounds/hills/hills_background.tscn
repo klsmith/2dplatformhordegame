@@ -1,0 +1,82 @@
+[gd_scene load_steps=7 format=3 uid="uid://du0gd1vj46p88"]
+
+[ext_resource type="Texture2D" uid="uid://eiasj6mfgm70" path="res://backgrounds/hills/Hills Layer 01.png" id="1_efv71"]
+[ext_resource type="Texture2D" uid="uid://c3u36k6j1gbg6" path="res://backgrounds/hills/Hills Layer 02.png" id="2_dyxkp"]
+[ext_resource type="Texture2D" uid="uid://ciykuc241h1gx" path="res://backgrounds/hills/Hills Layer 03.png" id="3_c6qq4"]
+[ext_resource type="Texture2D" uid="uid://dq886beeoqbc3" path="res://backgrounds/hills/Hills Layer 04.png" id="4_qrod0"]
+[ext_resource type="Texture2D" uid="uid://bx6u6a3qe2cgn" path="res://backgrounds/hills/Hills Layer 05.png" id="5_7a6vl"]
+[ext_resource type="Texture2D" uid="uid://io4155n0ww8p" path="res://backgrounds/hills/Hills Layer 06.png" id="6_fmlts"]
+
+[node name="HillsBackground" type="ParallaxBackground"]
+
+[node name="HillsLayer1" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.1, 0.1)
+motion_mirroring = Vector2(1024, 2.08165e-12)
+
+[node name="HillsSprite1" type="Sprite2D" parent="HillsLayer1"]
+texture_filter = 1
+texture_repeat = 3
+texture = ExtResource("1_efv71")
+centered = false
+region_enabled = true
+region_rect = Rect2(2.08165e-12, 2.08165e-12, 1024, 256)
+
+[node name="HillsLayer2" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.2, 0.2)
+motion_mirroring = Vector2(1024, 2.08165e-12)
+
+[node name="HillsSprite2" type="Sprite2D" parent="HillsLayer2"]
+texture_filter = 1
+texture_repeat = 2
+texture = ExtResource("2_dyxkp")
+centered = false
+region_enabled = true
+region_rect = Rect2(2.08165e-12, 2.08165e-12, 1024, 256)
+
+[node name="HillsLayer3" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.3, 0.3)
+motion_mirroring = Vector2(1024, 2.08165e-12)
+
+[node name="HillsSprite3" type="Sprite2D" parent="HillsLayer3"]
+texture_filter = 1
+texture_repeat = 2
+texture = ExtResource("3_c6qq4")
+centered = false
+region_enabled = true
+region_rect = Rect2(2.08165e-12, 2.08165e-12, 1024, 256)
+
+[node name="HillsLayer4" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.4, 0.4)
+motion_mirroring = Vector2(1024, 2.08165e-12)
+
+[node name="HillsSprite4" type="Sprite2D" parent="HillsLayer4"]
+texture_filter = 1
+texture_repeat = 2
+texture = ExtResource("4_qrod0")
+centered = false
+region_enabled = true
+region_rect = Rect2(2.08165e-12, 2.08165e-12, 1024, 256)
+
+[node name="HillsLayer5" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.5, 0.5)
+motion_mirroring = Vector2(1024, 2.08165e-12)
+
+[node name="HillsSprite5" type="Sprite2D" parent="HillsLayer5"]
+texture_filter = 1
+texture_repeat = 2
+texture = ExtResource("5_7a6vl")
+centered = false
+region_enabled = true
+region_rect = Rect2(2.08165e-12, 2.08165e-12, 1024, 256)
+
+[node name="HillsLayer6" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.57, 0.57)
+motion_mirroring = Vector2(1024, 2.08165e-12)
+
+[node name="HillsSprite6" type="Sprite2D" parent="HillsLayer6"]
+texture_filter = 1
+texture_repeat = 2
+texture = ExtResource("6_fmlts")
+centered = false
+region_enabled = true
+region_rect = Rect2(2.08165e-12, 2.08165e-12, 1024, 256)

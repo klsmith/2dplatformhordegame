@@ -1,0 +1,398 @@
+[gd_scene load_steps=34 format=3 uid="uid://bxqq6sdmn8y1t"]
+
+[ext_resource type="Script" path="res://player/player.gd" id="1_p1ylq"]
+[ext_resource type="Texture2D" uid="uid://cqbuhi2uj32me" path="res://player/player_pill.png" id="2_h5c7t"]
+[ext_resource type="Texture2D" uid="uid://dm2idnv6ah3e7" path="res://player/sample_head.png" id="3_0c78i"]
+[ext_resource type="Texture2D" uid="uid://b7uqyjidluic4" path="res://player/gun.png" id="3_al3f7"]
+[ext_resource type="Texture2D" uid="uid://dm84awjx5fm8r" path="res://player/player_pill_n.png" id="3_km1ps"]
+[ext_resource type="Texture2D" uid="uid://cwply3ynmnnts" path="res://player/sample_torso.png" id="4_7e0st"]
+[ext_resource type="AudioStream" uid="uid://cuqo2hqj6xxtn" path="res://player/762x39 Single Isolated WAV.wav" id="4_uiy1d"]
+[ext_resource type="Texture2D" uid="uid://b4oml8iro5rui" path="res://player/sample_pelvis.png" id="5_23pa8"]
+[ext_resource type="AudioStream" uid="uid://o5jggq0ry38q" path="res://player/9mm Pistol Dry Fire.wav" id="5_hlr3g"]
+[ext_resource type="AudioStream" uid="uid://chfwo58d8ilxi" path="res://player/308 Bolt Cycle WAV.wav" id="6_6mygh"]
+[ext_resource type="Texture2D" uid="uid://c6el1yde0d2o7" path="res://player/sample_tube.png" id="6_il06m"]
+[ext_resource type="Texture2D" uid="uid://dh1owc0ojbefj" path="res://progress_donut.png" id="7_rw3ax"]
+[ext_resource type="Texture2D" uid="uid://4wgg777cmede" path="res://player/gun_n.png" id="9_h34id"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_8brky"]
+diffuse_texture = ExtResource("2_h5c7t")
+normal_texture = ExtResource("3_km1ps")
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_gnu7j"]
+radius = 2.0
+height = 12.0
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_vo2oi"]
+radius = 2.0
+height = 12.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_uilfp"]
+size = Vector3(32, 8, 2.08165e-12)
+
+[sub_resource type="Curve" id="Curve_2q7n4"]
+_data = [Vector2(0.498013, 1), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="Curve" id="Curve_4lh7m"]
+_data = [Vector2(0.5, 0.75475), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="Curve" id="Curve_vvb7s"]
+_data = [Vector2(0.498413, 0.742574), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_okq8j"]
+curve_x = SubResource("Curve_2q7n4")
+curve_y = SubResource("Curve_4lh7m")
+curve_z = SubResource("Curve_vvb7s")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_f0lqi"]
+diffuse_texture = ExtResource("3_al3f7")
+normal_texture = ExtResource("9_h34id")
+
+[sub_resource type="Gradient" id="Gradient_iwxfb"]
+offsets = PackedFloat32Array(0, 0.15197, 0.20075, 0.309568, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.110646, 0.110646, 0.110646, 1, 0.0479792, 0.0479792, 0.0479792, 1, 0.00585661, 0.00585661, 0.00585661, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wqy0f"]
+gradient = SubResource("Gradient_iwxfb")
+width = 1024
+height = 1024
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="Gradient" id="Gradient_fvdq7"]
+interpolation_mode = 2
+interpolation_color_space = 2
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_uun0o"]
+gradient = SubResource("Gradient_fvdq7")
+width = 512
+height = 512
+fill = 1
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0.7, 0.3)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_au3ft"]
+radius = 4.0
+
+[sub_resource type="Gradient" id="Gradient_4ngew"]
+interpolation_mode = 2
+interpolation_color_space = 2
+offsets = PackedFloat32Array(0, 0.125704, 0.909944, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.0712547, 0.0712546, 0.0712546, 1, 0.00659614, 0.00659613, 0.00659614, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_b7dmw"]
+gradient = SubResource("Gradient_4ngew")
+width = 1024
+height = 1024
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="Animation" id="Animation_rdcx7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MuzzleFlash:enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_6ue7s"]
+resource_name = "muzzle_flash"
+length = 0.0333367
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MuzzleFlash:enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ahglu"]
+_data = {
+"RESET": SubResource("Animation_rdcx7"),
+"muzzle_flash": SubResource("Animation_6ue7s")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_07ub4"]
+radius = 8.0
+height = 24.0
+
+[node name="Player" type="CharacterBody2D"]
+physics_interpolation_mode = 1
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_p1ylq")
+
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+position = Vector2(0, -11)
+current = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(7.62939e-06, 1.34706e-05)
+texture = SubResource("CanvasTexture_8brky")
+metadata/_aseprite_wizard_config_ = {
+"i_mode": 1,
+"keep_anim_length": false,
+"layer": "",
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"slice": "",
+"source": "res://player/player_pill.aseprite"
+}
+metadata/_aseprite_wizard_interface_config_ = {
+"output_section": true
+}
+metadata/_aseprite_wizard_source_file_hash_ = "e2c7f528d9c320a55885acc4adb41506"
+
+[node name="SpriteContainer" type="Node2D" parent="."]
+visible = false
+
+[node name="HeadSprite" type="Sprite2D" parent="SpriteContainer"]
+texture_filter = 1
+position = Vector2(0, -17)
+texture = ExtResource("3_0c78i")
+metadata/_aseprite_wizard_config_ = {
+"i_mode": 1,
+"keep_anim_length": false,
+"layer": "",
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"slice": "",
+"source": "res://player/sample_body/sample_head.aseprite"
+}
+metadata/_aseprite_wizard_source_file_hash_ = "c09ecfe6b900360d5b8f0f2e985c4586"
+
+[node name="PelvisSprite" type="Sprite2D" parent="SpriteContainer"]
+texture_filter = 1
+position = Vector2(0, 5)
+texture = ExtResource("5_23pa8")
+offset = Vector2(2.08165e-12, 0.51)
+metadata/_aseprite_wizard_config_ = {
+"i_mode": 1,
+"keep_anim_length": false,
+"layer": "",
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"slice": "",
+"source": "res://player/sample_body/sample_pelvis.aseprite"
+}
+metadata/_aseprite_wizard_source_file_hash_ = "816bb12325d9a945e27eedf97ca36dfe"
+
+[node name="TorsoSprite" type="Sprite2D" parent="SpriteContainer"]
+texture_filter = 1
+position = Vector2(0, 5)
+texture = ExtResource("4_7e0st")
+offset = Vector2(0.5, -8)
+metadata/_aseprite_wizard_config_ = {
+"i_mode": 1,
+"keep_anim_length": false,
+"layer": "",
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"slice": "",
+"source": "res://player/sample_body/sample_torso.aseprite"
+}
+metadata/_aseprite_wizard_source_file_hash_ = "72440715d909be6e14989b4a1fcd7ec7"
+
+[node name="RightUpperArmSprite" type="Sprite2D" parent="SpriteContainer"]
+modulate = Color(0.87451, 0.443137, 0.14902, 1)
+texture_filter = 1
+position = Vector2(-1, -8)
+rotation = 0.855211
+texture = ExtResource("6_il06m")
+offset = Vector2(5, 2.08165e-12)
+metadata/_aseprite_wizard_config_ = {
+"i_mode": 1,
+"keep_anim_length": false,
+"layer": "",
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"slice": "",
+"source": "res://player/sample_body/sample_tube.aseprite"
+}
+metadata/_aseprite_wizard_source_file_hash_ = "0bb0baf656982fab9a199c990831fa0b"
+
+[node name="RightLowerArmSprite" type="Sprite2D" parent="SpriteContainer"]
+modulate = Color(0.984314, 0.94902, 0.211765, 1)
+texture_filter = 1
+position = Vector2(6, -1)
+rotation = -0.242601
+texture = ExtResource("6_il06m")
+offset = Vector2(5, 2.08165e-12)
+metadata/_aseprite_wizard_config_ = {
+"i_mode": 1,
+"keep_anim_length": false,
+"layer": "",
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"slice": "",
+"source": "res://player/sample_body/sample_tube.aseprite"
+}
+metadata/_aseprite_wizard_source_file_hash_ = "0bb0baf656982fab9a199c990831fa0b"
+
+[node name="RightUpperLegMesh" type="MeshInstance2D" parent="SpriteContainer"]
+modulate = Color(0.462745, 0.258824, 0.541176, 1)
+position = Vector2(2.08165e-12, 11)
+mesh = SubResource("CapsuleMesh_gnu7j")
+
+[node name="RightLowerLegMesh" type="MeshInstance2D" parent="SpriteContainer"]
+modulate = Color(0.843137, 0.482353, 0.729412, 1)
+position = Vector2(0, 19)
+mesh = SubResource("CapsuleMesh_vo2oi")
+
+[node name="GunPivot" type="Node2D" parent="."]
+unique_name_in_owner = true
+show_behind_parent = true
+z_index = 1
+position = Vector2(2.08165e-12, -4.03)
+
+[node name="GunMesh" type="MeshInstance2D" parent="GunPivot"]
+visible = false
+z_index = 1
+position = Vector2(16, 0)
+mesh = SubResource("BoxMesh_uilfp")
+texture = SubResource("CurveXYZTexture_okq8j")
+
+[node name="Sprite2D" type="Sprite2D" parent="GunPivot"]
+texture_filter = 1
+texture = SubResource("CanvasTexture_f0lqi")
+centered = false
+offset = Vector2(2.08165e-12, -4)
+metadata/_aseprite_wizard_config_ = {
+"i_mode": 1,
+"keep_anim_length": false,
+"layer": "",
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"slice": "",
+"source": "res://player/gun.aseprite"
+}
+metadata/_aseprite_wizard_source_file_hash_ = "7ef2f08e47d987a8bb11b6bac7635f21"
+
+[node name="GunSoundPlayer" type="AudioStreamPlayer2D" parent="GunPivot"]
+unique_name_in_owner = true
+position = Vector2(32, 0)
+stream = ExtResource("4_uiy1d")
+volume_db = -5.0
+max_polyphony = 10
+
+[node name="DryFireSound" type="AudioStreamPlayer2D" parent="GunPivot"]
+unique_name_in_owner = true
+position = Vector2(32, 0)
+stream = ExtResource("5_hlr3g")
+volume_db = -5.0
+max_polyphony = 10
+
+[node name="ReloadSound" type="AudioStreamPlayer2D" parent="GunPivot"]
+unique_name_in_owner = true
+stream = ExtResource("6_6mygh")
+volume_db = -3.23
+
+[node name="FlashLightAmbient" type="PointLight2D" parent="GunPivot"]
+unique_name_in_owner = true
+position = Vector2(32, 0)
+color = Color(1, 0.541176, 0.541176, 1)
+energy = 0.5
+blend_mode = 2
+range_layer_min = -100
+shadow_enabled = true
+shadow_filter = 2
+texture = SubResource("GradientTexture2D_wqy0f")
+
+[node name="FlashLightDirect" type="PointLight2D" parent="GunPivot"]
+unique_name_in_owner = true
+position = Vector2(32, 0)
+rotation = 0.785398
+color = Color(1, 0.541176, 0.541176, 1)
+energy = 0.5
+range_layer_min = -100
+shadow_enabled = true
+shadow_filter = 2
+shadow_item_cull_mask = 3
+texture = SubResource("GradientTexture2D_uun0o")
+offset = Vector2(256, -256)
+
+[node name="Area2D" type="Area2D" parent="GunPivot/FlashLightDirect"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GunPivot/FlashLightDirect/Area2D"]
+shape = SubResource("CircleShape2D_au3ft")
+
+[node name="MuzzleFlash" type="PointLight2D" parent="GunPivot"]
+position = Vector2(32, 0)
+enabled = false
+energy = 1.5
+texture = SubResource("GradientTexture2D_b7dmw")
+
+[node name="MuzzleFlashAnimation" type="AnimationPlayer" parent="GunPivot"]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_ahglu")
+}
+
+[node name="PlayerCollision" type="CollisionShape2D" parent="."]
+visible = false
+scale = Vector2(2, 2)
+shape = SubResource("CapsuleShape2D_07ub4")
+debug_color = Color(0, 0, 0.737255, 0.635294)
+
+[node name="CameraTarget" type="RemoteTransform2D" parent="."]
+unique_name_in_owner = true
+
+[node name="ShootCooldown" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.1
+
+[node name="ReloadProgress" type="TextureProgressBar" parent="."]
+unique_name_in_owner = true
+offset_left = -16.0
+offset_top = -56.0
+offset_right = 16.0
+offset_bottom = -24.0
+fill_mode = 8
+texture_progress = ExtResource("7_rw3ax")
+tint_progress = Color(1, 1, 1, 0.462745)
+
+[connection signal="finished" from="GunPivot/ReloadSound" to="." method="_on_reload_sound_finished"]
+[connection signal="area_shape_entered" from="GunPivot/FlashLightDirect/Area2D" to="." method="_on_area_2d_area_shape_entered"]
+[connection signal="area_shape_exited" from="GunPivot/FlashLightDirect/Area2D" to="." method="_on_area_2d_area_shape_exited"]
+[connection signal="body_shape_entered" from="GunPivot/FlashLightDirect/Area2D" to="." method="_on_area_2d_body_shape_entered"]
+[connection signal="body_shape_exited" from="GunPivot/FlashLightDirect/Area2D" to="." method="_on_area_2d_body_shape_exited"]
+[connection signal="timeout" from="ShootCooldown" to="." method="_on_shoot_cooldown_timeout"]

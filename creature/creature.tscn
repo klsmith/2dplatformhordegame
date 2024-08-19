@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c47o0p1glainl"]
+
+[ext_resource type="Script" path="res://test_level/creature.gd" id="1_cxp1h"]
+
+[node name="Creature" type="Node2D"]
+script = ExtResource("1_cxp1h")
+
+[node name="BodyContainer" type="Node" parent="."]

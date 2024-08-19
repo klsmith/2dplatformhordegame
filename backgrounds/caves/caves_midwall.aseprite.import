@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://mph310yskelm"
+path="res://.godot/imported/caves_midwall.aseprite-a0de0cd3f954b8872846c2c2b47e055b.res"
+
+[deps]
+
+source_file="res://backgrounds/caves/caves_midwall.aseprite"
+dest_files=["res://.godot/imported/caves_midwall.aseprite-a0de0cd3f954b8872846c2c2b47e055b.res"]
+
+[params]
+

@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://ciepc7sg1a311"
+path="res://.godot/imported/big_wasp_stinger.aseprite-b3958946187306f50e951cf59eb666c4.res"
+
+[deps]
+
+source_file="res://enemy/big_wasp_stinger.aseprite"
+dest_files=["res://.godot/imported/big_wasp_stinger.aseprite-b3958946187306f50e951cf59eb666c4.res"]
+
+[params]
+

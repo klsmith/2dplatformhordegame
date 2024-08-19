@@ -1,0 +1,432 @@
+[gd_scene load_steps=33 format=3 uid="uid://bmr1jg13wjg3f"]
+
+[ext_resource type="Script" path="res://enemy/enemy.gd" id="1_hew3d"]
+[ext_resource type="Material" uid="uid://bc0alssp0cptl" path="res://hit_flash_material.tres" id="2_i6uo1"]
+[ext_resource type="Texture2D" uid="uid://cfyrydrybss8y" path="res://enemy/big_wasp_body.png" id="3_hfbyk"]
+[ext_resource type="Texture2D" uid="uid://cl8vft8h3oskq" path="res://enemy/big_wasp_wings_n.png" id="4_mttsn"]
+[ext_resource type="Texture2D" uid="uid://ieof4101j70" path="res://enemy/big_wasp_head.png" id="4_seipg"]
+[ext_resource type="Texture2D" uid="uid://co3jy6jcm4tis" path="res://enemy/big_wasp_wings.png" id="5_68uyq"]
+[ext_resource type="Texture2D" uid="uid://vyru2jna8wpl" path="res://enemy/big_wasp_butt.png" id="5_ld3jq"]
+[ext_resource type="Texture2D" uid="uid://cp5lr2rw63b3n" path="res://enemy/big_wasp_stinger.png" id="6_5iksl"]
+[ext_resource type="Texture2D" uid="uid://b4tn6bhgr2w3k" path="res://enemy/big_wasp_butt_n.png" id="6_s2joi"]
+[ext_resource type="Texture2D" uid="uid://bgftdsjxhv6q3" path="res://enemy/big_wasp_antena.png" id="6_vwlsa"]
+[ext_resource type="Texture2D" uid="uid://qremy46gmxhr" path="res://enemy/big_wasp_body_n.png" id="8_pioi0"]
+[ext_resource type="Texture2D" uid="uid://8ilo403fcona" path="res://enemy/big_wasp_head_n.png" id="10_n1aav"]
+[ext_resource type="Texture2D" uid="uid://cb6wjumbqcej0" path="res://enemy/big_wasp_antena_n.png" id="12_hoxce"]
+[ext_resource type="Texture2D" uid="uid://bwxgao0bqhnf5" path="res://enemy/big_wasp_stinger_n.png" id="14_gb8xv"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_olmjm"]
+diffuse_texture = ExtResource("5_68uyq")
+normal_texture = ExtResource("4_mttsn")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_h6k0o"]
+diffuse_texture = ExtResource("5_ld3jq")
+normal_texture = ExtResource("6_s2joi")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_2vdp0"]
+diffuse_texture = ExtResource("3_hfbyk")
+normal_texture = ExtResource("8_pioi0")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_yumcd"]
+diffuse_texture = ExtResource("4_seipg")
+normal_texture = ExtResource("10_n1aav")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_niv22"]
+diffuse_texture = ExtResource("6_vwlsa")
+normal_texture = ExtResource("12_hoxce")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_ueo3u"]
+diffuse_texture = ExtResource("6_5iksl")
+normal_texture = ExtResource("14_gb8xv")
+
+[sub_resource type="SkeletonModification2DTwoBoneIK" id="SkeletonModification2DTwoBoneIK_faist"]
+resource_local_to_scene = true
+target_nodepath = NodePath("StingerIK")
+joint_one_bone_idx = 3
+joint_one_bone2d_node = NodePath("BaseBone/ButtBone")
+joint_two_bone_idx = 4
+joint_two_bone2d_node = NodePath("BaseBone/ButtBone/StingerBone")
+
+[sub_resource type="SkeletonModificationStack2D" id="SkeletonModificationStack2D_rv525"]
+resource_local_to_scene = true
+enabled = true
+modification_count = 1
+modifications/0 = SubResource("SkeletonModification2DTwoBoneIK_faist")
+
+[sub_resource type="Animation" id="Animation_3y4x8"]
+resource_name = "HIT_FLASH"
+length = 0.05
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SkeletonContainer/SpriteContainer:material:shader_parameter/Enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_ofe5x"]
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SkeletonContainer/SpriteContainer:material:shader_parameter/Enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hfs54"]
+_data = {
+"HIT_FLASH": SubResource("Animation_3y4x8"),
+"RESET": SubResource("Animation_ofe5x")
+}
+
+[sub_resource type="Animation" id="Animation_yqoah"]
+resource_name = "Idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SkeletonContainer/Skeleton/BaseBone/BodyBone:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.307301, 0.180965, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SkeletonContainer/Skeleton/BaseBone/BodyBone/HeadBone:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.4, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [-0.426487, -0.263234, 0.029304, -0.313102, -0.595112, -0.426487]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SkeletonContainer/Skeleton/StingerIK:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-28, 72), Vector2(-6, 78), Vector2(-54, 56), Vector2(-28, 72)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = false
+tracks/3/path = NodePath("SkeletonContainer/SpriteContainer/WingSprite:flip_v")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.0001, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, false, true, false, true, false, true, false, true, false, true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SkeletonContainer/SpriteContainer/WingSprite:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, -1), Vector2(1, 1), Vector2(1, -1), Vector2(1, 1), Vector2(1, -1), Vector2(1, 1), Vector2(1, -1), Vector2(1, 1), Vector2(1, -1), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_kuo46"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kstbq"]
+_data = {
+"IDLE": SubResource("Animation_yqoah"),
+"RESET": SubResource("Animation_kuo46")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7bm6m"]
+radius = 15.503
+height = 72.0267
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t6hn2"]
+radius = 14.0357
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hbykx"]
+radius = 20.6155
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hd61d"]
+radius = 18.8651
+height = 79.8921
+
+[node name="Enemy" type="AnimatableBody2D"]
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+script = ExtResource("1_hew3d")
+metadata/movie_file = "/Users/koopersmith/Game Assets/bee_movie.avi"
+
+[node name="SkeletonContainer" type="Node2D" parent="."]
+
+[node name="SpriteContainer" type="Node2D" parent="SkeletonContainer"]
+material = ExtResource("2_i6uo1")
+
+[node name="WingSprite" type="Sprite2D" parent="SkeletonContainer/SpriteContainer"]
+texture_filter = 1
+position = Vector2(6, -2)
+rotation = -0.0391337
+skew = -0.000187516
+texture = SubResource("CanvasTexture_olmjm")
+flip_v = true
+metadata/_aseprite_wizard_config_ = {
+"i_mode": 1,
+"keep_anim_length": false,
+"layer": "",
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": true,
+"player": "",
+"slice": "",
+"source": "res://enemy/big_wasp_wings.aseprite"
+}
+metadata/_aseprite_wizard_source_file_hash_ = "8e475763303be1a662b2d0cf121d08c3"
+metadata/_aseprite_wizard_interface_config_ = {
+"layer_section": true
+}
+
+[node name="ButtSprite" type="Sprite2D" parent="SkeletonContainer/SpriteContainer"]
+texture_filter = 1
+use_parent_material = true
+position = Vector2(-2.92186, 31.104)
+rotation = -0.601075
+scale = Vector2(0.999998, 0.999997)
+texture = SubResource("CanvasTexture_h6k0o")
+metadata/_aseprite_wizard_config_ = {
+"i_mode": 1,
+"keep_anim_length": false,
+"layer": "",
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"slice": "",
+"source": "res://enemy/big_wasp_butt.aseprite"
+}
+metadata/_aseprite_wizard_source_file_hash_ = "3184cbecb3d097bf31a7a890e341c57a"
+
+[node name="BodySprite" type="Sprite2D" parent="SkeletonContainer/SpriteContainer"]
+texture_filter = 1
+use_parent_material = true
+position = Vector2(1.98598, -13.9959)
+scale = Vector2(0.999827, 0.999828)
+skew = -0.00054121
+texture = SubResource("CanvasTexture_2vdp0")
+metadata/_aseprite_wizard_config_ = {
+"i_mode": 1,
+"keep_anim_length": false,
+"layer": "",
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"slice": "",
+"source": "res://enemy/big_wasp_body.aseprite"
+}
+metadata/_aseprite_wizard_source_file_hash_ = "937d19d32d855e7beba1069fcb32d459"
+
+[node name="HeadSprite" type="Sprite2D" parent="SkeletonContainer/SpriteContainer"]
+texture_filter = 1
+use_parent_material = true
+position = Vector2(3.22648, -30.9161)
+rotation = 0.00158596
+scale = Vector2(1.00062, 0.998684)
+skew = -0.00222111
+texture = SubResource("CanvasTexture_yumcd")
+metadata/_aseprite_wizard_config_ = {
+"i_mode": 1,
+"keep_anim_length": false,
+"layer": "",
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"slice": "",
+"source": "res://enemy/big_wasp_head.aseprite"
+}
+metadata/_aseprite_wizard_source_file_hash_ = "b0ed64adb2f1d916b7e7e2b0a0d080bb"
+
+[node name="AntenaSprite" type="Sprite2D" parent="SkeletonContainer/SpriteContainer/HeadSprite"]
+texture_filter = 1
+use_parent_material = true
+position = Vector2(-5.58086, -29.1199)
+texture = SubResource("CanvasTexture_niv22")
+metadata/_aseprite_wizard_config_ = {
+"i_mode": 1,
+"keep_anim_length": false,
+"layer": "",
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"slice": "",
+"source": "res://enemy/big_wasp_antena.aseprite"
+}
+metadata/_aseprite_wizard_source_file_hash_ = "6ad32e5cca23e7d2babb3f3135efa9e1"
+
+[node name="StingerSprite" type="Sprite2D" parent="SkeletonContainer/SpriteContainer"]
+texture_filter = 1
+use_parent_material = true
+position = Vector2(-20.4555, 67.0161)
+rotation = 0.117075
+scale = Vector2(0.999997, 0.999997)
+texture = SubResource("CanvasTexture_ueo3u")
+metadata/_aseprite_wizard_config_ = {
+"i_mode": 1,
+"keep_anim_length": false,
+"layer": "",
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"slice": "",
+"source": "res://enemy/big_wasp_stinger.aseprite"
+}
+metadata/_aseprite_wizard_source_file_hash_ = "962a943807b7ef71770290bb0620d90e"
+
+[node name="Skeleton" type="Skeleton2D" parent="SkeletonContainer"]
+modification_stack = SubResource("SkeletonModificationStack2D_rv525")
+
+[node name="BaseBone" type="Bone2D" parent="SkeletonContainer/Skeleton"]
+rest = Transform2D(1, 0, 0, 1, 0, 0)
+editor_settings/show_bone_gizmo = false
+
+[node name="BodyBone" type="Bone2D" parent="SkeletonContainer/Skeleton/BaseBone"]
+position = Vector2(-4, 10)
+scale = Vector2(0.999827, 0.999828)
+skew = -0.00054121
+rest = Transform2D(0.999611, -0.027884, 0.027884, 0.999611, 2.08165e-12, 2.08165e-12)
+editor_settings/show_bone_gizmo = false
+
+[node name="BodySpriteRT" type="RemoteTransform2D" parent="SkeletonContainer/Skeleton/BaseBone/BodyBone"]
+position = Vector2(6, -24)
+remote_path = NodePath("../../../../SpriteContainer/BodySprite")
+
+[node name="BodyCollisionRT" type="RemoteTransform2D" parent="SkeletonContainer/Skeleton/BaseBone/BodyBone"]
+position = Vector2(10, -24)
+remote_path = NodePath("../../../../../BodyCollision")
+
+[node name="HeadBone" type="Bone2D" parent="SkeletonContainer/Skeleton/BaseBone/BodyBone"]
+position = Vector2(4, -44)
+rotation = -0.426487
+scale = Vector2(0.999822, 0.999825)
+skew = -0.0025624
+rest = Transform2D(0.910424, -0.413675, 0.413675, 0.910424, 4, -44)
+editor_settings/show_bone_gizmo = false
+
+[node name="HeadSpriteRT" type="RemoteTransform2D" parent="SkeletonContainer/Skeleton/BaseBone/BodyBone/HeadBone"]
+position = Vector2(1.67564, 4.14635)
+rotation = -5.85467
+remote_path = NodePath("../../../../../SpriteContainer/HeadSprite")
+
+[node name="HeadCollision2RT" type="RemoteTransform2D" parent="SkeletonContainer/Skeleton/BaseBone/BodyBone/HeadBone"]
+position = Vector2(-23.5174, 5.65479)
+remote_path = NodePath("../../../../../../HeadCollision2")
+
+[node name="HeadCollisionRT" type="RemoteTransform2D" parent="SkeletonContainer/Skeleton/BaseBone/BodyBone/HeadBone"]
+position = Vector2(6.55366, -2.83738)
+rotation = -1.09075
+remote_path = NodePath("../../../../../../HeadCollision")
+
+[node name="ButtBone" type="Bone2D" parent="SkeletonContainer/Skeleton/BaseBone"]
+rotation = -0.601074
+scale = Vector2(0.999998, 0.999997)
+rest = Transform2D(0.824728, -0.565527, 0.565529, 0.824726, 0, 0)
+editor_settings/show_bone_gizmo = false
+metadata/_local_pose_override_enabled_ = true
+
+[node name="ButtRT" type="RemoteTransform2D" parent="SkeletonContainer/Skeleton/BaseBone/ButtBone"]
+position = Vector2(-20, 24)
+remote_path = NodePath("../../../../SpriteContainer/ButtSprite")
+
+[node name="ButtCollisionRT" type="RemoteTransform2D" parent="SkeletonContainer/Skeleton/BaseBone/ButtBone"]
+position = Vector2(-18, 24)
+rotation = 0.853918
+remote_path = NodePath("../../../../../ButtCollision")
+
+[node name="StingerBone" type="Bone2D" parent="SkeletonContainer/Skeleton/BaseBone/ButtBone"]
+position = Vector2(-48, 46)
+rotation = 2.62829
+scale = Vector2(1, 1)
+rest = Transform2D(0.815973, 0.578081, -0.57808, 0.815975, -48, 46)
+editor_settings/show_bone_gizmo = false
+metadata/_local_pose_override_enabled_ = true
+
+[node name="StingerRT" type="RemoteTransform2D" parent="SkeletonContainer/Skeleton/BaseBone/ButtBone/StingerBone"]
+position = Vector2(-6.73989, 2.38458)
+rotation = 0.0508499
+remote_path = NodePath("../../../../../SpriteContainer/StingerSprite")
+
+[node name="StingerIK" type="Node2D" parent="SkeletonContainer/Skeleton"]
+position = Vector2(-28, 72)
+
+[node name="HitFlashPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_hfs54")
+}
+
+[node name="SkeletonPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_kstbq")
+}
+
+[node name="HeadCollision" type="CollisionShape2D" parent="."]
+position = Vector2(4.7572, -39.2819)
+rotation = -1.51979
+scale = Vector2(0.998575, 1.00073)
+skew = 0.00201023
+shape = SubResource("CapsuleShape2D_7bm6m")
+
+[node name="HeadCollision2" type="CollisionShape2D" parent="."]
+position = Vector2(-19.0681, -19.1268)
+rotation = -0.42658
+scale = Vector2(0.999445, 0.999857)
+skew = -0.00291657
+shape = SubResource("CircleShape2D_t6hn2")
+
+[node name="BodyCollision" type="CollisionShape2D" parent="."]
+position = Vector2(5.98528, -13.9959)
+scale = Vector2(0.999827, 0.999828)
+skew = -0.00054121
+shape = SubResource("CircleShape2D_hbykx")
+
+[node name="ButtCollision" type="CollisionShape2D" parent="."]
+position = Vector2(-1.27241, 29.9729)
+rotation = 0.252843
+scale = Vector2(0.999997, 0.999998)
+shape = SubResource("CapsuleShape2D_hd61d")

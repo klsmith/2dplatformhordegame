@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://b73g2embp1jhi"
+path="res://.godot/imported/crosshair.aseprite-ba4c7332ffb43fb51dba57c5732696b5.res"
+
+[deps]
+
+source_file="res://player/crosshair.aseprite"
+dest_files=["res://.godot/imported/crosshair.aseprite-ba4c7332ffb43fb51dba57c5732696b5.res"]
+
+[params]
+

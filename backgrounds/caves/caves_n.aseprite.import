@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://djytk4npai0pj"
+path="res://.godot/imported/caves_n.aseprite-81f94086d821152ea48a3dc00d2c5e4d.res"
+
+[deps]
+
+source_file="res://backgrounds/caves/caves_n.aseprite"
+dest_files=["res://.godot/imported/caves_n.aseprite-81f94086d821152ea48a3dc00d2c5e4d.res"]
+
+[params]
+

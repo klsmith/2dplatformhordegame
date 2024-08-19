@@ -1,0 +1,4 @@
+[gd_resource type="PhysicsMaterial" format=3 uid="uid://dply13pajp7ee"]
+
+[resource]
+resource_name = "Basic Ground"

@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://ce10iepy08on"
+path="res://.godot/imported/sample_torso.aseprite-d4d1306507e6397d4f4ffc87ccee0457.res"
+
+[deps]
+
+source_file="res://player/sample_body/sample_torso.aseprite"
+dest_files=["res://.godot/imported/sample_torso.aseprite-d4d1306507e6397d4f4ffc87ccee0457.res"]
+
+[params]
+

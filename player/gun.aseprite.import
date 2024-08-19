@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://ci570yseiydgc"
+path="res://.godot/imported/gun.aseprite-ac08eb99333bb8374f18b524cfd1bb99.res"
+
+[deps]
+
+source_file="res://player/gun.aseprite"
+dest_files=["res://.godot/imported/gun.aseprite-ac08eb99333bb8374f18b524cfd1bb99.res"]
+
+[params]
+

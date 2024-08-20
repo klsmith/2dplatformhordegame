@@ -6,31 +6,81 @@
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_rbh2c")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="ControlsMarginContainer" type="MarginContainer" parent="."]
+offset_right = 256.0
+offset_bottom = 190.0
 theme = ExtResource("2_xnwjd")
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="GridContainer" type="GridContainer" parent="MarginContainer"]
+[node name="ControlsGridContainer" type="GridContainer" parent="ControlsMarginContainer"]
 layout_mode = 2
 
-[node name="FpsLabel" type="Label" parent="MarginContainer/GridContainer"]
-unique_name_in_owner = true
+[node name="ControlsLabel" type="Label" parent="ControlsMarginContainer/ControlsGridContainer"]
+layout_mode = 2
+text = "Controls:"
+
+[node name="MovementLabel" type="Label" parent="ControlsMarginContainer/ControlsGridContainer"]
+layout_mode = 2
+text = "WASD to Move"
+
+[node name="JumpLabel" type="Label" parent="ControlsMarginContainer/ControlsGridContainer"]
+layout_mode = 2
+text = "Space to Jump
+"
+
+[node name="FlareLabel" type="Label" parent="ControlsMarginContainer/ControlsGridContainer"]
+layout_mode = 2
+text = "F to Throw Flare"
+
+[node name="ShootLabel" type="Label" parent="ControlsMarginContainer/ControlsGridContainer"]
+layout_mode = 2
+text = "Mouse1 to Shoot"
+
+[node name="ReloadLabel" type="Label" parent="ControlsMarginContainer/ControlsGridContainer"]
+layout_mode = 2
+text = "R to Reload"
+
+[node name="StatsMarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -109.0
+offset_right = 121.0
+grow_vertical = 0
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="StatsGridContainer" type="GridContainer" parent="StatsMarginContainer"]
 layout_mode = 2
 
-[node name="MagLabel" type="Label" parent="MarginContainer/GridContainer"]
+[node name="MagLabel" type="Label" parent="StatsMarginContainer/StatsGridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Mag: ? / ? "
 
-[node name="AmmoLabel" type="Label" parent="MarginContainer/GridContainer"]
+[node name="AmmoLabel" type="Label" parent="StatsMarginContainer/StatsGridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Ammo: ? / ?"
+
+[node name="FPSMarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -75.0
+offset_bottom = 55.0
+grow_horizontal = 0
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="FpsLabel" type="Label" parent="FPSMarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "FPS: ?"

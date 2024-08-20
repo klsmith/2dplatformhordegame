@@ -8,15 +8,15 @@ var slowed := false
 var sound_finished := false
 var particles_finished := false
 var has_collided := false
-var prev_position := Vector2(position)
+var prev_position := Vector2(global_position)
 
 static func create(initPosition: Vector2, initVelocity: Vector2) -> Bullet:
 	var instance: Bullet = load(SCENE).instantiate()
-	instance.position = initPosition
+	instance.global_position = initPosition
 	instance.prev_position = initPosition
 	instance.linear_velocity = initVelocity
-	instance.initial_speed = initVelocity.length()
-	instance.apply_force(initVelocity)
+	#instance.initial_speed = initVelocity.length()
+	#instance.apply_force(initVelocity)
 	return instance
 
 @onready var sprite := %BulletSprite as Sprite2D
@@ -61,9 +61,9 @@ func _process(delta: float) -> void:
 	else:
 		sprite.visible = false
 		smear.visible = true
-	smear.rotation = prev_position.angle_to_point(position)
-	smear.scale.x = position.distance_to(prev_position) / 3
-	prev_position = Vector2(position)
+	smear.rotation = prev_position.angle_to_point(global_position)
+	smear.scale.x = global_position.distance_to(prev_position) / 3
+	prev_position = Vector2(global_position)
 
 func _on_bullet_sound_player_finished() -> void:
 	sound_finished = true

@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://byuuv6yjd5jus" path="res://hud/hud.tscn" id="1_1upyb"]
 [ext_resource type="Texture2D" uid="uid://buqwiu0v5lss1" path="res://test_level/cave_wall_repeat.png" id="1_vftg1"]
 [ext_resource type="TileSet" uid="uid://bcbqhd17l43hg" path="res://backgrounds/caves/cave_tiles.tres" id="2_1r3cj"]
+[ext_resource type="Script" path="res://test_level/canvas_modulate.gd" id="2_euafa"]
 [ext_resource type="Texture2D" uid="uid://0pwu406r6a4f" path="res://backgrounds/caves/caves_midwall.png" id="3_8ksno"]
 [ext_resource type="Texture2D" uid="uid://d2df8t1814hgw" path="res://backgrounds/caves/caves_midwall_n.png" id="4_62sw5"]
 [ext_resource type="PackedScene" uid="uid://bxqq6sdmn8y1t" path="res://player/player.tscn" id="4_ueq4q"]
@@ -16,8 +17,6 @@ tonemap_exposure = 2.17
 tonemap_white = 4.6
 glow_bloom = 0.1
 glow_blend_mode = 1
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_rlcbv"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_uuku3"]
 diffuse_texture = ExtResource("3_8ksno")
@@ -34,14 +33,9 @@ metadata/_edit_use_anchors_ = true
 environment = SubResource("Environment_w0mpn")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color(0, 0, 0, 1)
-
-[node name="WorldBoundary" type="StaticBody2D" parent="."]
-position = Vector2(0, 866)
-metadata/_edit_lock_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBoundary"]
-shape = SubResource("WorldBoundaryShape2D_rlcbv")
+script = ExtResource("2_euafa")
 
 [node name="CaveBackground" type="Node2D" parent="."]
 

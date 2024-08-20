@@ -27,11 +27,16 @@ var ammo_curr := ammo_size
 @onready var dry_fire_sound := %DryFireSound as AudioStreamPlayer2D
 @onready var reload_sound := %ReloadSound as AudioStreamPlayer2D
 @onready var reload_progress := %ReloadProgress as TextureProgressBar
+@onready var flashlight_ambient := %FlashLightAmbient as Light2D
+@onready var flashlight_direct := %FlashLightDirect as Light2D
+@onready var gun_tip := %GunTip as Node2D
 
 signal current_mag_changed(new_mag_curr: int)
 signal current_ammo_changed(new_ammo_curr: int)
 
 func _ready() -> void:
+	flashlight_ambient.visible = true
+	flashlight_direct.visible = true
 	camera_target.remote_path = camera.get_path()
 	reload_progress.value = 0
 	reload_progress.visible = false
@@ -61,8 +66,7 @@ func throw_flare() -> void:
 	pass
 
 var flashlight_mode = 3
-@onready var flashlight_ambient := %FlashLightAmbient as Light2D
-@onready var flashlight_direct := %FlashLightDirect as Light2D
+
 func toggle_flashlight() -> void:
 	flashlight_mode = wrapi(flashlight_mode + 1, 0, 4)
 	flashlight_ambient.visible = bool(flashlight_mode & 1)
@@ -113,7 +117,7 @@ func shoot() -> void:
 	gun_sound.play()
 	muzzle_flash.play("muzzle_flash")
 	var vel := shoot_dir * 5000
-	var bullet := Bullet.create(position + shoot_pos, vel)
+	var bullet := Bullet.create(gun_tip.global_position, vel)
 	get_tree().root.add_child(bullet)
 	mag_curr -= 1
 	emit_signal("current_mag_changed", mag_curr)

@@ -11,7 +11,6 @@ const camera_target_sense := 0.5
 var gravity := ProjectSettings.get_setting("physics/2d/default_gravity") as float
 var shoot_dir := Vector2.ZERO
 var shoot_pos := Vector2.ZERO
-var shooting := false
 var can_shoot := true
 var reloading := false
 var mag_size := 25
@@ -52,16 +51,8 @@ func _unhandled_input(event: InputEvent) -> void:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 		else:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
-	if event.is_action_pressed("player_interact"):
-		interact_held = true
-	if event.is_action_released("player_interact"):
-		interact_held = false
 	if event.is_action_pressed("player_flashlight"):
 		throw_flare()
-	if event.is_action_pressed("player_shoot"):
-		shooting = true
-	if event.is_action_released("player_shoot"):
-		shooting = false
 	if event.is_action_pressed("player_reload"):
 		reload()
 
@@ -117,7 +108,8 @@ func _on_shoot_cooldown_timeout() -> void:
 	can_shoot = true
 
 func handle_shooting() -> void:
-	if shooting and can_shoot and !reloading:
+	if Input.is_action_pressed("player_shoot")\
+		 and can_shoot and not reloading:
 		if has_mag():
 			shoot()
 		elif has_ammo():
@@ -165,13 +157,13 @@ func _on_reload_sound_finished() -> void:
 	reloading = false
 
 func _physics_process(delta: float) -> void:
-	if interact_held:
+	if Input.is_action_pressed("player_interact"):
 		handle_interaction()
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
 	# Handle jump.
-	if Input.is_action_just_pressed("player_jump") and is_on_floor():
+	if Input.is_action_pressed("player_jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.

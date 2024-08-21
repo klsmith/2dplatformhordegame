@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://bxqq6sdmn8y1t"]
+[gd_scene load_steps=35 format=3 uid="uid://bxqq6sdmn8y1t"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_p1ylq"]
 [ext_resource type="Texture2D" uid="uid://cqbuhi2uj32me" path="res://player/player_pill.png" id="2_h5c7t"]
@@ -133,10 +133,13 @@ fill_to = Vector2(0.5, 0)
 radius = 8.0
 height = 24.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_anvvc"]
+radius = 29.0172
+
 [node name="Player" type="CharacterBody2D"]
 physics_interpolation_mode = 1
 collision_layer = 2
-collision_mask = 5
+collision_mask = 33
 script = ExtResource("1_p1ylq")
 
 [node name="AudioListener2D" type="AudioListener2D" parent="."]
@@ -394,6 +397,13 @@ offset_bottom = -24.0
 fill_mode = 8
 texture_progress = ExtResource("7_rw3ax")
 tint_progress = Color(1, 1, 1, 0.462745)
+
+[node name="InteractArea" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea"]
+shape = SubResource("CircleShape2D_anvvc")
 
 [connection signal="finished" from="GunPivot/ReloadSound" to="." method="_on_reload_sound_finished"]
 [connection signal="area_shape_entered" from="GunPivot/GunTip/FlashLightDirect/Area2D" to="." method="_on_area_2d_area_shape_entered"]

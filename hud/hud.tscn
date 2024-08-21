@@ -43,6 +43,10 @@ text = "Mouse1 to Shoot"
 layout_mode = 2
 text = "R to Reload"
 
+[node name="KickLabel" type="Label" parent="ControlsMarginContainer/ControlsGridContainer"]
+layout_mode = 2
+text = "E to Kick"
+
 [node name="StatsMarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 2
 anchor_top = 1.0

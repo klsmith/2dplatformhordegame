@@ -18,6 +18,7 @@ var mag_size := 25
 var mag_curr := mag_size
 var ammo_size := 500
 var ammo_curr := ammo_size
+var interact_held := false
 
 @onready var camera_target := %CameraTarget as RemoteTransform2D
 @onready var gun_pivot := %GunPivot as Node2D
@@ -30,6 +31,7 @@ var ammo_curr := ammo_size
 @onready var flashlight_ambient := %FlashLightAmbient as Light2D
 @onready var flashlight_direct := %FlashLightDirect as Light2D
 @onready var gun_tip := %GunTip as Node2D
+@onready var interact_area := %InteractArea as Area2D
 
 signal current_mag_changed(new_mag_curr: int)
 signal current_ammo_changed(new_ammo_curr: int)
@@ -50,6 +52,10 @@ func _unhandled_input(event: InputEvent) -> void:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 		else:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+	if event.is_action_pressed("player_interact"):
+		interact_held = true
+	if event.is_action_released("player_interact"):
+		interact_held = false
 	if event.is_action_pressed("player_flashlight"):
 		throw_flare()
 	if event.is_action_pressed("player_shoot"):
@@ -59,11 +65,25 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("player_reload"):
 		reload()
 
+func handle_interaction() -> void:
+	var bodies := interact_area.get_overlapping_bodies()
+	var min_dis := INF
+	var min_body : RigidBody2D = null
+	for body in bodies:
+		if body is RigidBody2D:
+			var dis = global_position.distance_to(body.global_position)
+			if dis < min_dis:
+				min_dis = dis
+				min_body = body
+	if min_body != null:
+		var dir := global_position.direction_to(min_body.global_position)
+		min_body.apply_central_force(dir * 1000)
+
+
 func throw_flare() -> void:
 	var vel := shoot_dir * 1000
 	var flare := Flare.create(position, vel)
 	get_tree().root.add_child(flare)
-	pass
 
 var flashlight_mode = 3
 
@@ -145,6 +165,8 @@ func _on_reload_sound_finished() -> void:
 	reloading = false
 
 func _physics_process(delta: float) -> void:
+	if interact_held:
+		handle_interaction()
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta

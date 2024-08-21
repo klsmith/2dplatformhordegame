@@ -129,12 +129,12 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.5, 0)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_anvvc"]
+radius = 16.0
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_07ub4"]
 radius = 8.0
 height = 24.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_anvvc"]
-radius = 29.0172
 
 [node name="Player" type="CharacterBody2D"]
 physics_interpolation_mode = 1
@@ -341,11 +341,11 @@ libraries = {
 [node name="FlashLightAmbient" type="PointLight2D" parent="GunPivot/GunTip"]
 unique_name_in_owner = true
 visible = false
+position = Vector2(-1.47, 0)
 color = Color(1, 0.541176, 0.541176, 1)
 energy = 0.5
 blend_mode = 2
 range_layer_min = -100
-shadow_enabled = true
 shadow_filter = 2
 texture = SubResource("GradientTexture2D_wqy0f")
 
@@ -375,6 +375,13 @@ enabled = false
 energy = 1.5
 texture = SubResource("GradientTexture2D_b7dmw")
 
+[node name="InteractArea" type="Area2D" parent="GunPivot/GunTip"]
+unique_name_in_owner = true
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GunPivot/GunTip/InteractArea"]
+shape = SubResource("CircleShape2D_anvvc")
+
 [node name="PlayerCollision" type="CollisionShape2D" parent="."]
 visible = false
 scale = Vector2(2, 2)
@@ -397,13 +404,6 @@ offset_bottom = -24.0
 fill_mode = 8
 texture_progress = ExtResource("7_rw3ax")
 tint_progress = Color(1, 1, 1, 0.462745)
-
-[node name="InteractArea" type="Area2D" parent="."]
-unique_name_in_owner = true
-collision_mask = 32
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea"]
-shape = SubResource("CircleShape2D_anvvc")
 
 [connection signal="finished" from="GunPivot/ReloadSound" to="." method="_on_reload_sound_finished"]
 [connection signal="area_shape_entered" from="GunPivot/GunTip/FlashLightDirect/Area2D" to="." method="_on_area_2d_area_shape_entered"]

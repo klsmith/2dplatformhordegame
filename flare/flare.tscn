@@ -20,7 +20,10 @@ fill_to = Vector2(0.5, 0)
 
 [node name="Flare" type="RigidBody2D"]
 collision_layer = 16
-collision_mask = 17
+collision_mask = 49
+continuous_cd = 1
+contact_monitor = true
+max_contacts_reported = 5
 script = ExtResource("1_dw2bx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

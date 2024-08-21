@@ -67,7 +67,7 @@ func handle_interaction() -> void:
 				min_dis = dis
 				min_body = body
 	if min_body != null:
-		var dir := global_position.direction_to(min_body.global_position)
+		var dir := gun_pivot.global_position.direction_to(gun_tip.global_position)
 		min_body.apply_central_force(dir * 1000)
 
 

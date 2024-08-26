@@ -48,6 +48,12 @@ project/assembly_name="2DPlatformHordeGame"
 
 enabled=PackedStringArray("res://addons/2d_shapes/plugin.cfg", "res://addons/AsepriteWizard/plugin.cfg")
 
+[global_group]
+
+Pushable=""
+Interactable=""
+PickUpable=""
+
 [input]
 
 player_left={

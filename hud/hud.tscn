@@ -45,7 +45,11 @@ text = "R to Reload"
 
 [node name="PushLabel" type="Label" parent="ControlsMarginContainer/ControlsGridContainer"]
 layout_mode = 2
-text = "E to Push"
+text = "E to Push Boulders"
+
+[node name="PickupLabel" type="Label" parent="ControlsMarginContainer/ControlsGridContainer"]
+layout_mode = 2
+text = "E to Pick Up Flares"
 
 [node name="StatsMarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 2

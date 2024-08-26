@@ -1,9 +1,11 @@
 [gd_scene load_steps=6 format=3 uid="uid://chqwp60kkbss0"]
 
-[ext_resource type="Texture2D" uid="uid://cklfnhar27whn" path="res://player/bullet.png" id="1_7vrqv"]
 [ext_resource type="Script" path="res://flare/flare.gd" id="1_dw2bx"]
+[ext_resource type="Texture2D" uid="uid://u0lpu8d0snh6" path="res://flare/flare.png" id="2_7g5cc"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dysl4"]
+radius = 5.0
+height = 14.0
 
 [sub_resource type="Gradient" id="Gradient_wvwe3"]
 interpolation_color_space = 2
@@ -18,7 +20,7 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.5, 0)
 
-[node name="Flare" type="RigidBody2D"]
+[node name="Flare" type="RigidBody2D" groups=["Interactable", "PickUpable"]]
 collision_layer = 16
 collision_mask = 49
 continuous_cd = 1
@@ -26,14 +28,27 @@ contact_monitor = true
 max_contacts_reported = 5
 script = ExtResource("1_dw2bx")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(4.76837e-07, 4.76837e-07)
+texture = ExtResource("2_7g5cc")
+metadata/_aseprite_wizard_config_ = {
+"i_mode": 1,
+"keep_anim_length": false,
+"layer": "",
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"slice": "",
+"source": "res://flare/flare.aseprite"
+}
+metadata/_aseprite_wizard_source_file_hash_ = "a3f25748500c1f54408933f03a784a39"
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_dysl4")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(4.76837e-07, 4.76837e-07)
-scale = Vector2(7.5, 5)
-texture = ExtResource("1_7vrqv")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 color = Color(1, 0.12, 0.12, 1)

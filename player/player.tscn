@@ -99,6 +99,9 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.5, 0)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_au3ft"]
+radius = 4.0
+
 [sub_resource type="Gradient" id="Gradient_fvdq7"]
 interpolation_mode = 2
 interpolation_color_space = 2
@@ -111,9 +114,6 @@ height = 512
 fill = 1
 fill_from = Vector2(0, 1)
 fill_to = Vector2(0.7, 0.3)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_au3ft"]
-radius = 4.0
 
 [sub_resource type="Gradient" id="Gradient_4ngew"]
 interpolation_mode = 2
@@ -344,10 +344,15 @@ visible = false
 position = Vector2(-1.47, 0)
 color = Color(1, 0.541176, 0.541176, 1)
 energy = 0.5
-blend_mode = 2
 range_layer_min = -100
 shadow_filter = 2
 texture = SubResource("GradientTexture2D_wqy0f")
+
+[node name="FlashLightControlArea" type="Area2D" parent="GunPivot/GunTip"]
+rotation = 0.785398
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GunPivot/GunTip/FlashLightControlArea"]
+shape = SubResource("CircleShape2D_au3ft")
 
 [node name="FlashLightDirect" type="PointLight2D" parent="GunPivot/GunTip"]
 unique_name_in_owner = true
@@ -355,18 +360,12 @@ visible = false
 rotation = 0.785398
 color = Color(1, 0.541176, 0.541176, 1)
 energy = 0.5
-blend_mode = 2
 range_layer_min = -100
 shadow_enabled = true
 shadow_filter = 2
 shadow_item_cull_mask = 3
 texture = SubResource("GradientTexture2D_uun0o")
 offset = Vector2(256, -256)
-
-[node name="Area2D" type="Area2D" parent="GunPivot/GunTip/FlashLightDirect"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GunPivot/GunTip/FlashLightDirect/Area2D"]
-shape = SubResource("CircleShape2D_au3ft")
 
 [node name="MuzzleFlash" type="PointLight2D" parent="GunPivot/GunTip"]
 unique_name_in_owner = true
@@ -377,7 +376,7 @@ texture = SubResource("GradientTexture2D_b7dmw")
 
 [node name="InteractArea" type="Area2D" parent="GunPivot/GunTip"]
 unique_name_in_owner = true
-collision_mask = 32
+collision_mask = 48
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GunPivot/GunTip/InteractArea"]
 shape = SubResource("CircleShape2D_anvvc")
@@ -406,8 +405,8 @@ texture_progress = ExtResource("7_rw3ax")
 tint_progress = Color(1, 1, 1, 0.462745)
 
 [connection signal="finished" from="GunPivot/ReloadSound" to="." method="_on_reload_sound_finished"]
-[connection signal="area_shape_entered" from="GunPivot/GunTip/FlashLightDirect/Area2D" to="." method="_on_area_2d_area_shape_entered"]
-[connection signal="area_shape_exited" from="GunPivot/GunTip/FlashLightDirect/Area2D" to="." method="_on_area_2d_area_shape_exited"]
-[connection signal="body_shape_entered" from="GunPivot/GunTip/FlashLightDirect/Area2D" to="." method="_on_area_2d_body_shape_entered"]
-[connection signal="body_shape_exited" from="GunPivot/GunTip/FlashLightDirect/Area2D" to="." method="_on_area_2d_body_shape_exited"]
+[connection signal="area_shape_entered" from="GunPivot/GunTip/FlashLightControlArea" to="." method="_on_area_2d_area_shape_entered"]
+[connection signal="area_shape_exited" from="GunPivot/GunTip/FlashLightControlArea" to="." method="_on_area_2d_area_shape_exited"]
+[connection signal="body_shape_entered" from="GunPivot/GunTip/FlashLightControlArea" to="." method="_on_area_2d_body_shape_entered"]
+[connection signal="body_shape_exited" from="GunPivot/GunTip/FlashLightControlArea" to="." method="_on_area_2d_body_shape_exited"]
 [connection signal="timeout" from="ShootCooldown" to="." method="_on_shoot_cooldown_timeout"]

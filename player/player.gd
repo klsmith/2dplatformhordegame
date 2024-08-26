@@ -61,18 +61,21 @@ func handle_interaction() -> void:
 	var min_dis := INF
 	var min_body : RigidBody2D = null
 	for body in bodies:
-		if body is RigidBody2D:
+		if body is RigidBody2D and body.is_in_group("Interactable"):
 			var dis = global_position.distance_to(body.global_position)
 			if dis < min_dis:
 				min_dis = dis
 				min_body = body
 	if min_body != null:
-		var dir := gun_pivot.global_position.direction_to(gun_tip.global_position)
-		min_body.apply_central_force(dir * 1000)
+		if min_body.is_in_group("Pushable"):
+			var dir := gun_pivot.global_position.direction_to(gun_tip.global_position)
+			min_body.apply_central_force(dir * 1000)
+		else:
+			min_body.pickup(self)
 
 
 func throw_flare() -> void:
-	var vel := shoot_dir * 1000
+	var vel := shoot_dir * 750
 	var flare := Flare.create(position, vel)
 	get_tree().root.add_child(flare)
 

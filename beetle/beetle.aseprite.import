@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://dpd5hrw88at6d"
+path="res://.godot/imported/beetle.aseprite-3ba06bffe55c3c9facae22868df1f22c.res"
+
+[deps]
+
+source_file="res://beetle/beetle.aseprite"
+dest_files=["res://.godot/imported/beetle.aseprite-3ba06bffe55c3c9facae22868df1f22c.res"]
+
+[params]
+

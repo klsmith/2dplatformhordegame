@@ -1,0 +1,41 @@
+[gd_scene load_steps=9 format=3 uid="uid://i5xoolyev101"]
+
+[ext_resource type="Texture2D" uid="uid://v83h75x5o60w" path="res://beetle/beetle.png" id="1_8ifbw"]
+[ext_resource type="Texture2D" uid="uid://u0lpu8d0snh6" path="res://flare/flare.png" id="1_kiuek"]
+[ext_resource type="Texture2D" uid="uid://b0vx0fc5hssfs" path="res://beetle/beetle_n.png" id="2_b8dpa"]
+[ext_resource type="Texture2D" uid="uid://cj6nvas0u1pit" path="res://flare/flare_n.png" id="2_uyfyj"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_50x8f"]
+diffuse_texture = ExtResource("1_kiuek")
+normal_texture = ExtResource("2_uyfyj")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_t6onc"]
+diffuse_texture = ExtResource("1_8ifbw")
+normal_texture = ExtResource("2_b8dpa")
+
+[sub_resource type="Gradient" id="Gradient_exwmd"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_m68ak"]
+gradient = SubResource("Gradient_exwmd")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[node name="Beetle" type="Node2D"]
+
+[node name="HeadSprite" type="Sprite2D" parent="."]
+modulate = Color(0.298039, 0.333333, 0.654902, 1)
+light_mask = 3
+position = Vector2(0, -14)
+texture = SubResource("CanvasTexture_50x8f")
+
+[node name="BodySprite" type="Sprite2D" parent="."]
+light_mask = 3
+texture = SubResource("CanvasTexture_t6onc")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(0, 1, 1, 1)
+range_layer_min = -100
+range_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_m68ak")

@@ -4,6 +4,7 @@ class_name Flare
 static var SCENE := "res://flare/flare.tscn"
 
 var marked_for_destroy := false
+var pickup_target : Node2D = null
 
 static func create(initPosition: Vector2, initVelocity: Vector2) -> Flare:
 	var instance: Flare = load(SCENE).instantiate()
@@ -32,9 +33,16 @@ func start_destroy() -> void:
 		fade_out.tween_property(light, "texture_scale", 0, 0.5)
 		fade_out.parallel()
 		fade_out.tween_property(sprite, "scale", Vector2.ZERO, 0.5)
+		if pickup_target != null:
+			fade_out.parallel()
+			fade_out.tween_property(self, "global_position", pickup_target.global_position, 0.5)
 		fade_out.parallel()
 		fade_out.tween_property($CollisionShape2D, "scale", Vector2.ZERO, 0.5)
 		fade_out.tween_callback(queue_free)
 
 func _exit_tree() -> void:
 	FlareManager.deregister(self)
+
+func pickup(target: Node2D) -> void:
+	pickup_target = target
+	start_destroy()

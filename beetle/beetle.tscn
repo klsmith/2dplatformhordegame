@@ -1,17 +1,21 @@
-[gd_scene load_steps=9 format=3 uid="uid://i5xoolyev101"]
+[gd_scene load_steps=11 format=3 uid="uid://i5xoolyev101"]
 
 [ext_resource type="Texture2D" uid="uid://v83h75x5o60w" path="res://beetle/beetle.png" id="1_8ifbw"]
+[ext_resource type="Script" path="res://beetle/beetle.gd" id="1_8jde4"]
 [ext_resource type="Texture2D" uid="uid://u0lpu8d0snh6" path="res://flare/flare.png" id="1_kiuek"]
 [ext_resource type="Texture2D" uid="uid://b0vx0fc5hssfs" path="res://beetle/beetle_n.png" id="2_b8dpa"]
 [ext_resource type="Texture2D" uid="uid://cj6nvas0u1pit" path="res://flare/flare_n.png" id="2_uyfyj"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_t6onc"]
+diffuse_texture = ExtResource("1_8ifbw")
+normal_texture = ExtResource("2_b8dpa")
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_50x8f"]
 diffuse_texture = ExtResource("1_kiuek")
 normal_texture = ExtResource("2_uyfyj")
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_t6onc"]
-diffuse_texture = ExtResource("1_8ifbw")
-normal_texture = ExtResource("2_b8dpa")
+[sub_resource type="CircleShape2D" id="CircleShape2D_6ut0w"]
+radius = 16.0
 
 [sub_resource type="Gradient" id="Gradient_exwmd"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
@@ -22,17 +26,38 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.5, 0)
 
-[node name="Beetle" type="Node2D"]
+[node name="Beetle" type="CharacterBody2D"]
+rotation = 1.5708
+collision_layer = 64
+collision_mask = 64
+motion_mode = 1
+script = ExtResource("1_8jde4")
 
-[node name="HeadSprite" type="Sprite2D" parent="."]
-modulate = Color(0.298039, 0.333333, 0.654902, 1)
-light_mask = 3
-position = Vector2(0, -14)
-texture = SubResource("CanvasTexture_50x8f")
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+physics_interpolation_mode = 1
+path_desired_distance = 16.0
+target_desired_distance = 32.0
+path_max_distance = 128.0
+navigation_layers = 3
+path_postprocessing = 1
+radius = 128.0
+neighbor_distance = 256.0
+avoidance_layers = 4
+avoidance_mask = 4
 
 [node name="BodySprite" type="Sprite2D" parent="."]
 light_mask = 3
 texture = SubResource("CanvasTexture_t6onc")
+
+[node name="HeadSprite" type="Sprite2D" parent="BodySprite"]
+modulate = Color(0.298039, 0.333333, 0.654902, 1)
+show_behind_parent = true
+light_mask = 3
+position = Vector2(0, -14)
+texture = SubResource("CanvasTexture_50x8f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_6ut0w")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 color = Color(0, 1, 1, 1)

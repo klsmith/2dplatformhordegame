@@ -1,14 +1,18 @@
-[gd_scene load_steps=11 format=3 uid="uid://i5xoolyev101"]
+[gd_scene load_steps=12 format=3 uid="uid://i5xoolyev101"]
 
 [ext_resource type="Texture2D" uid="uid://v83h75x5o60w" path="res://beetle/beetle.png" id="1_8ifbw"]
 [ext_resource type="Script" path="res://beetle/beetle.gd" id="1_8jde4"]
 [ext_resource type="Texture2D" uid="uid://u0lpu8d0snh6" path="res://flare/flare.png" id="1_kiuek"]
 [ext_resource type="Texture2D" uid="uid://b0vx0fc5hssfs" path="res://beetle/beetle_n.png" id="2_b8dpa"]
 [ext_resource type="Texture2D" uid="uid://cj6nvas0u1pit" path="res://flare/flare_n.png" id="2_uyfyj"]
+[ext_resource type="Texture2D" uid="uid://djxib3lv37vgk" path="res://beetle/beetle_s.png" id="4_itmyj"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_t6onc"]
 diffuse_texture = ExtResource("1_8ifbw")
 normal_texture = ExtResource("2_b8dpa")
+specular_texture = ExtResource("4_itmyj")
+specular_color = Color(0, 0.953776, 0.867016, 1)
+specular_shininess = 0.5
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_50x8f"]
 diffuse_texture = ExtResource("1_kiuek")
@@ -57,6 +61,7 @@ position = Vector2(0, -14)
 texture = SubResource("CanvasTexture_50x8f")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CircleShape2D_6ut0w")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]

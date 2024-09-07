@@ -126,6 +126,9 @@ position = Vector2(2021, 108)
 [node name="Beetle3" parent="." instance=ExtResource("10_ogp0r")]
 position = Vector2(2571, 242)
 
+[node name="Beetle4" parent="." instance=ExtResource("10_ogp0r")]
+position = Vector2(576, 360)
+
 [node name="Player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("4_ueq4q")]
 position = Vector2(385, 332)
 camera = NodePath("../Camera2D")

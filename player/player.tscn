@@ -88,13 +88,13 @@ _data = {
 }
 
 [sub_resource type="Gradient" id="Gradient_iwxfb"]
-offsets = PackedFloat32Array(0, 0.15197, 0.20075, 0.309568, 1)
-colors = PackedColorArray(1, 1, 1, 1, 0.110646, 0.110646, 0.110646, 1, 0.0479792, 0.0479792, 0.0479792, 1, 0.00585661, 0.00585661, 0.00585661, 1, 0, 0, 0, 1)
+offsets = PackedFloat32Array(0, 0.415584, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.116883, 0.116883, 0.116883, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_wqy0f"]
 gradient = SubResource("Gradient_iwxfb")
-width = 1024
-height = 1024
+width = 768
+height = 768
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.5, 0)
@@ -105,6 +105,7 @@ radius = 4.0
 [sub_resource type="Gradient" id="Gradient_fvdq7"]
 interpolation_mode = 2
 interpolation_color_space = 2
+offsets = PackedFloat32Array(0.75974, 1)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_uun0o"]
@@ -343,7 +344,6 @@ unique_name_in_owner = true
 visible = false
 position = Vector2(-1.47, 0)
 color = Color(1, 0.541176, 0.541176, 1)
-energy = 0.5
 range_layer_min = -100
 shadow_filter = 2
 texture = SubResource("GradientTexture2D_wqy0f")
@@ -359,7 +359,6 @@ unique_name_in_owner = true
 visible = false
 rotation = 0.785398
 color = Color(1, 0.541176, 0.541176, 1)
-energy = 0.5
 range_layer_min = -100
 shadow_enabled = true
 shadow_filter = 2

@@ -1,13 +1,13 @@
 extends RigidBody2D
 class_name Flare
 
-static var SCENE := "res://flare/flare.tscn"
+const SCENE := preload("res://flare/flare.tscn")
 
 var marked_for_destroy := false
 var pickup_target : Node2D = null
 
 static func create(initPosition: Vector2, initVelocity: Vector2) -> Flare:
-	var instance: Flare = load(SCENE).instantiate()
+	var instance: Flare = SCENE.instantiate()
 	instance.position = initPosition
 	instance.linear_velocity = initVelocity
 	instance.rotation = initVelocity.angle()

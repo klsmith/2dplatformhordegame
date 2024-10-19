@@ -45,7 +45,7 @@ func _ready() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action("ui_cancel"):
 		get_tree().quit()
-	if event.is_action("ui_fullscreen"):
+	if event.is_action_pressed("ui_fullscreen"):
 		var m = DisplayServer.window_get_mode()
 		if m == DisplayServer.WINDOW_MODE_WINDOWED:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
